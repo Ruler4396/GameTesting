@@ -1,0 +1,46 @@
+#Scissor {
+    background-image: url('image/Scissor.png');
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 340px;
+    left: 100px;
+}
+
+#Chopper {
+    background-image: url('image/Chopper.png');
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 340px;
+    left: 10px;
+}
+
+#Bamboo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+#BambooTube {
+    background-image: url('image/BambooTube.png');
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 340px;
+    left: 190px;
+    display: none;
+}
+
+#Back {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 340px;
+    left: 300px;
+}
+
+/* 鼠标样式 */
+img[draggable=true] {
+    cursor: move;
+}
