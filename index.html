@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> <!-- 注意编码格式统一为UTF-8 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameTesting1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div></div>
-    <button draggable="true" id = "Scissor" ondragstart="startDrag(event)"></button>
-    <button draggable="true" id = "Chopper" ondragstart="startDrag(event)"></button>
-    <button draggable="true" id = "BambooTube" ondragstart="startDrag(event)"></button>
-    <button id = "Back">返回</button>
-    <img id = "Bamboo" src = "image/Bamboo.png"/>
-    <script src = "index.js">
-    </script>
+    <!-- 通用的全局按钮，注意这里是示例，实际游戏中请按先后顺序在对应位置加载不同的类 -->
+    <div id = "UniersalButton"> 
+        <button draggable="true" id = "Scissor" 
+            ondragstart="startDrag(event)"></button>
+        <button draggable="true" id = "Chopper" 
+            ondragstart="startDrag(event)"></button>
+        <button draggable="true" id = "BambooTube" 
+            ondragstart="startDrag(event)"></button>
+        <button draggable="true" id = "Silk"
+            ondragstart="startDrag(event)"></button>
+        <button id = "Back">初始化</button>
+    </div>
+    
+    <div id = "CutBamboo" class = "CutBamboo">
+        <img id = "Bamboo" src = "image/Bamboo.png" />
+        <button id = "ArrowBamboo"></button>
+    </div>
+
+    <div id = "CutFabric" class="CutFabric">
+        <img id = "Fabric" src = "image/Fabric.png" />
+        <button id = "ArrowFabric"></button>
+    </div>
+    
+    <script src = "index.js"></script>
+    
 </body>
 </html>

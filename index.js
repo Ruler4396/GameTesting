@@ -3,14 +3,20 @@ var Scissor = document.getElementById("Scissor"),
     Bamboo = document.getElementById("Bamboo"),
     BambooTube = document.getElementById("BambooTube"),
     Back = document.getElementById("Back");
+//从HTML获取对应ID的全局按钮元素
 
 function startDrag(event) {
-    event.dataTransfer.setData("text/plain", event.target.id);//拖动某个
+    event.dataTransfer.setData("text/plain", event.target.id);
 }
+// 拖动某个
 
 Bamboo.ondragover = function(event) {
-    event.preventDefault(); // 防止默认行为
+    event.preventDefault(); 
 }
+Fabric.ondragover = function(event) {
+    event.preventDefault(); 
+}
+// 防止拖动鼠标时的默认行为
 
 Bamboo.ondrop = function(event) {
     event.preventDefault();
@@ -21,7 +27,38 @@ Bamboo.ondrop = function(event) {
     }
 }
 
+Fabric.ondrop = function(event) {
+    event.preventDefault();
+    var data = event.dataTransfer.getData("text/plain");
+    if(data === "Scissor") {
+        Fabric.src = "image/Fabric1.png";
+        Silk.style.display = "block"; // 显示该元素
+    }
+}
+
+// 场景切换
+{
+var ArrowBamboo = document.getElementById("ArrowBamboo");
+var ArrowFabric = document.getElementById("ArrowFabric");
+var CutBamboo = document.getElementById("CutBamboo");
+var CutFabric = document.getElementById("CutFabric");
+
+ArrowFabric.addEventListener("click",function(){
+    CutBamboo.style.display = "block";
+    CutFabric.style.display = "none";
+});
+
+ArrowBamboo.addEventListener("click",function(){
+    CutBamboo.style.display = "none";
+    CutFabric.style.display = "block";
+});
+}
+
+// 调试用，初始化
 Back.addEventListener("click",function(){
     Bamboo.src = "image/Bamboo.png";
-    BambooTube.style.display = "none"; // 隐藏该元素
+    BambooTube.style.display = "none"; 
+    Silk.style.display = "none";
+    CutBamboo.style.display = "block";
+    CutFabric.style.display = "none";
 });

@@ -16,12 +16,6 @@
     left: 10px;
 }
 
-#Bamboo {
-    width: 150px;
-    height: auto;
-    display: block;
-}
-
 #BambooTube {
     background-image: url('image/BambooTube.png');
     width: 60px;
@@ -32,11 +26,49 @@
     display: none;
 }
 
-#Back {
-    width: 40px;
-    height: 40px;
+#Silk {
+    background-image: url('image/Silk.png');
+    width: 60px;
+    height: 60px;
     position: absolute;
     top: 340px;
+    left: 280px;
+    display: none;
+}
+
+#Back {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 420px;
+    left: 60px;
+}
+
+#Bamboo {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+#CutFabric {
+    display: none;
+}
+
+#ArrowFabric {
+    background-image: url('image/ArrowFabric.png');
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 130px;
+    left: 300px;
+}
+
+#ArrowBamboo {
+    background-image: url('image/ArrowBamboo.png');
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 130px;
     left: 300px;
 }
 
