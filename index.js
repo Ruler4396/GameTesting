@@ -1,23 +1,36 @@
-var Scissor = document.getElementById("Scissor"),
-    Chopper = document.getElementById("Chopper"),
-    Bamboo = document.getElementById("Bamboo"),
-    BambooTube = document.getElementById("BambooTube"),
-    Back = document.getElementById("Back");
-//从HTML获取对应ID的全局按钮元素
-
-function startDrag(event) {
-    event.dataTransfer.setData("text/plain", event.target.id);
+// 从HTML文件中获取元素
+function getElement(id) {
+    return document.getElementById(id);
 }
-// 拖动某个
+var Scissor = getElement("Scissor"),
+    Chopper = getElement("Chopper"),
+    Bamboo = getElement("Bamboo"),
+    BambooTube = getElement("BambooTube"),
+    Fabric = getElement("Fabric"),
+    Silk = getElement("Silk"),
+    Back = getElement("Back"),
+    ArrowBamboo = getElement("ArrowBamboo"),
+    ArrowFabric = getElement("ArrowFabric"),
+    CutBamboo = getElement("CutBamboo"),
+    CutFabric = getElement("CutFabric");
 
+/**  
+ * 防止拖动鼠标时的默认行为，
+ * ondragover事件检测对象与另一个元素是否重合
+ */
 Bamboo.ondragover = function(event) {
     event.preventDefault(); 
 }
 Fabric.ondragover = function(event) {
     event.preventDefault(); 
 }
-// 防止拖动鼠标时的默认行为
 
+// 获取拖动元素的ID，
+function startDrag(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+}
+
+//检测元素是否重合、ID是否符合要求并行动
 Bamboo.ondrop = function(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text/plain");
@@ -26,7 +39,6 @@ Bamboo.ondrop = function(event) {
         BambooTube.style.display = "block"; // 显示该元素
     }
 }
-
 Fabric.ondrop = function(event) {
     event.preventDefault();
     var data = event.dataTransfer.getData("text/plain");
@@ -36,27 +48,24 @@ Fabric.ondrop = function(event) {
     }
 }
 
-// 场景切换
+// 场景切换按钮
 {
-var ArrowBamboo = document.getElementById("ArrowBamboo");
-var ArrowFabric = document.getElementById("ArrowFabric");
-var CutBamboo = document.getElementById("CutBamboo");
-var CutFabric = document.getElementById("CutFabric");
-
-ArrowFabric.addEventListener("click",function(){
-    CutBamboo.style.display = "block";
-    CutFabric.style.display = "none";
+function switchScene(show, hide) {
+  show.style.display = "block";
+  hide.style.display = "none";
+}
+ArrowFabric.addEventListener("click", function() {
+  switchScene(CutBamboo, CutFabric);
 });
-
-ArrowBamboo.addEventListener("click",function(){
-    CutBamboo.style.display = "none";
-    CutFabric.style.display = "block";
+ArrowBamboo.addEventListener("click", function() {
+  switchScene(CutFabric, CutBamboo);
 });
 }
 
-// 调试用，初始化
+// 调试用按钮，初始化
 Back.addEventListener("click",function(){
     Bamboo.src = "image/Bamboo.png";
+    Fabric.src = "image/Fabric.png";
     BambooTube.style.display = "none"; 
     Silk.style.display = "none";
     CutBamboo.style.display = "block";
